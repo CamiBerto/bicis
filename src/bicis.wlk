@@ -2,8 +2,8 @@ class Bici {
 	var property rodado 
 	var property largoEnCm 
 	var property marca
-	var accesorios = []
-	var codigoIdentificacion = null
+	var property accesorios = []
+	var id = 0
 	
 	
 	
@@ -28,6 +28,16 @@ class Bici {
 	}
 	
 	method tieneLuz(){
-		return accesorios.any({c=>c.esLuminoso()})
+		return accesorios.any({c =>c.esLuminoso()})
 	}
+	method agregarAccesorio(accesorio){
+		accesorios.add(accesorio)
+	}
+	
+	method cantidadDeAccesoriosLivianos() { 
+		return accesorios.count ({ a => a.peso() < 1})
+	}
+	method id () { return id }
+	
+	method id (numero) { id = numero }
 }
