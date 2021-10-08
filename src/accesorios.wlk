@@ -1,5 +1,5 @@
 class  Farolito {
-	method peso(){return 0.5}
+	method peso() = 0.5
 	method carga(){return 0}
 	method esLuminoso(){return true}
 	method esLiviano(){return true}
