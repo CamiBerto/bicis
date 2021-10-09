@@ -1,0 +1,54 @@
+import deposito.*
+import bicis.*
+import accesorios.*
+
+describe "Tests para los depósitos" {
+
+	const deposito = new Deposito()
+	const bici1 = new Bici(rodado=28, largoEnCm=150, marca="Olmo", accesorios=#{new Farolito()})
+	const bici2 = new Bici(rodado=26, largoEnCm=110, marca="Legnano", accesorios=#{new Farolito(), new Canasto(volumen=8), new MorralDeBici(largo=21, ojoDeGato=true)})
+	const bici3 = new Bici(rodado=20, largoEnCm=90, marca="Legnano", accesorios=#{new MorralDeBici(largo=6, ojoDeGato=false)})
+
+	method initialize() {
+		deposito.guardarBici(bici1)
+		deposito.guardarBici(bici2)
+		deposito.guardarBici(bici3)	
+	}
+	test "bicis rapidas van a ser bici 1 y 3" {
+		assert.equals(deposito.bicisRapidas(), [bici1, bici2])
+	}
+	test "tiene 2 marcas en el deposito" {
+		assert.equals(deposito.listaDeMarcas(), #{"Olmo", "Legnano"})
+	}
+	test "el depo no es nocturno, la bici3 no tiene ojo de gato" {
+		assert.notThat(deposito.esNocturno())
+	}
+	test "tiene bici para llevar 10KG" {
+		assert.that(deposito.algunaBicicletaPuedeCargar(10))
+	}
+	test "tiene bici para llevar 50KG" {
+		assert.notThat(deposito.algunaBicicletaPuedeCargar(50))
+	}
+	test "bici mas rapida"{
+		assert.equals(deposito.biciMasRapida(), bici1)
+	}
+	test "carga total de bicis largas"{
+		assert.equals(deposito.cargaDeBicisLargas(), 0)
+	}
+	test "carga total de bicis largas, si se agrega una bici larga"{
+		var biciLarga = new Bici(rodado=28, largoEnCm=180, marca="Olmo", accesorios=#{new Canasto(volumen=8)})
+		deposito.guardarBici(biciLarga)
+		assert.equals(deposito.cargaDeBicisLargas(), 16)
+	}
+	test "cantidad de bicis sin accesorios, si agregamos una bici sin accesorios"{
+		var biciSinAcc = new Bici(rodado=28, largoEnCm=180, marca="Olmo")
+		deposito.guardarBici(biciSinAcc)
+		assert.equals(deposito.cantidadDeBicisSinAccesorios(), 1)
+	}
+	
+	test "es companiera de bici 1, si genero una bici con igual nombre y una dif de 10cm"{
+		var biciCompaniera = new Bici(rodado=28, largoEnCm=160, marca="Olmo")
+		assert.that(deposito.hayCompanieraDe(biciCompaniera))
+	}
+	
+}

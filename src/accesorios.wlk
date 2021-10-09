@@ -20,6 +20,10 @@ class  MorralDeBici {
 	method carga(){return self.largo() / 3}
 	method esLuminoso(){return self.ojoDeGato()}
 	method esLiviano(){return false}
-	
-	
 }
+
+/*
+	Al agregar mas accesorios, deben contenter los metodos de los accesorios previos para respetar el polimorfismo, en los ejemplos que se dieron:
+	A Canasto: habria que agregar un nuevo atributo para identificar si es delantero o trasero. Y para los otros hay que crear nuevas clases que respenten el poli
+*/
+	
