@@ -1,0 +1,76 @@
+import accesorios.*
+import bicis.*
+
+describe "bici rodado 28, de 150 cm de largo, marca Olmo con farolito" {
+	var farolitoB1 = new Farolito()
+	var bici1 = new Bici(rodado=28,largoEnCm=150,marca="Olmo",accesorios=[farolitoB1])
+	
+	test "altura" {
+		assert.equals(85,bici1.altura())
+	}
+	test "velocidada crucero" {
+		assert.equals(34,bici1.velocidadDeCrucero())
+	}
+	test "peso" {
+		assert.equals(14.5,bici1.peso())
+	}
+	test "carga" {
+		assert.equals(0,bici1.carga())
+	}
+	test "tiene luz" {
+		assert.that(bici1.tieneLuz())
+	}
+	test "cant accesorios livianos" {
+		assert.equals(1,bici1.cantidadDeAccesoriosLivianos())
+	}
+}
+
+describe "bici rodado 26, largo 110 cm, marca Legnano con con farolito, canasto, morral y ojo de gato" {
+	var farolitoB2 = new Farolito()
+	var canastoB2 = new Canasto(volumen=8)
+	var morralB2 = new MorralDeBici(largo=21,ojoDeGato=true )
+	var bici2 = new Bici(rodado=26,largoEnCm=110,marca="Legnano",accesorios=[farolitoB2,canastoB2,morralB2])
+	
+	test "altura" {
+		assert.equals(80,bici2.altura())
+	}
+	test "velocidada crucero" {
+		assert.equals(28,bici2.velocidadDeCrucero())
+	}
+	test "peso" {
+		assert.equals(15.5,bici2.peso())
+	}
+	test "carga" {
+		assert.equals(23,bici2.carga())
+	}
+	test "tiene luz" {
+		assert.that(bici2.tieneLuz())
+	}
+	test "cant accesorios livianos" {
+		assert.equals(2,bici2.cantidadDeAccesoriosLivianos())
+	}	
+}
+
+describe "bici rodado 20, largo 90 cm, marca Legnano con morral sin ojo de gato" {
+	var morralB3 = new MorralDeBici(largo=6,ojoDeGato=false)
+	var bici3 = new Bici(rodado=20,largoEnCm=90,marca="Legnano",accesorios=[morralB3])
+
+	test "altura" {
+		assert.equals(65,bici3.altura())
+	}
+	test "velocidada crucero" {
+		assert.equals(22,bici3.velocidadDeCrucero())
+	}
+	test "peso" {
+		assert.equals(11.2,bici3.peso())
+	}
+	test "carga" {
+		assert.equals(2,bici3.carga())
+	}
+	test "tiene luz" {
+		assert.notThat(bici3.tieneLuz())
+	}
+	test "cant accesorios livianos" {
+		assert.equals(0,bici3.cantidadDeAccesoriosLivianos())
+	}	
+}

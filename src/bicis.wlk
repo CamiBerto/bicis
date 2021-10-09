@@ -2,7 +2,7 @@ class Bici {
 	var property rodado 
 	var property largoEnCm 
 	var property marca
-	var property accesorios = []
+	var property accesorios = #{}
 	var id = 0
 	
 	
@@ -19,6 +19,7 @@ class Bici {
 		}
 	}
 
+	
 	method carga(){
 		return accesorios.sum({c=> c.carga()})
 	}

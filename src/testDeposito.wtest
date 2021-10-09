@@ -1,0 +1,24 @@
+import deposito.*
+import bicis.*
+import accesorios.*
+
+describe "Tests para los depósitos" {
+
+const deposito = new Deposito()
+const bici1 = new Bici(rodado=28, largoEnCm=150, marca="Olmo", accesorios=#{new Farolito()})
+const bici2 = new Bici(rodado=26, largoEnCm=110, marca="Legnano", accesorios=#{new Farolito(), new Canasto(volumen=8), new MorralDeBici(largo=21, ojoDeGato=true)})
+const bici3 = new Bici(rodado=20, largoEnCm=90, marca="Legnano", accesorios=#{new MorralDeBici(largo=6, ojoDeGato=false)})
+
+method initialize() {
+deposito.guardarBici(bici1)
+deposito.guardarBici(bici2)
+deposito.guardarBici(bici3)
+	
+}
+
+test "testX" {
+
+	assert.that(true)
+
+}
+}
