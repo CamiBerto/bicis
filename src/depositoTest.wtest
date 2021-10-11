@@ -1,4 +1,4 @@
-import depositoPrueba.*
+import deposito.*
 import bicis.*
 import accesorios.*
 
@@ -57,10 +57,28 @@ describe "Tests para los depósitos" {
 		deposito.guardarBici(biciCompaniera)
 		assert.that(deposito.hayCompanieras())
 	}
-	test "se hizo la luz"{
-		const biciCompaniera = new Bici(rodado=28, largoEnCm=160, marca="Olmo")
-		deposito.guardarBici(biciCompaniera)
+		
+}
+describe "test para se hizo la luz"{
+	const deposito = new Deposito()
+	const bici1 = new Bici(rodado=28, largoEnCm=150, marca="Olmo", accesorios=[new Farolito()])
+	const bici2 = new Bici(rodado=26, largoEnCm=110, marca="Legnano", accesorios=[new Farolito(), new Canasto(volumen=8), new MorralDeBici(largo=21, ojoDeGato=true)])
+	const bici3 = new Bici(rodado=20, largoEnCm=90, marca="Legnano", accesorios=[new MorralDeBici(largo=6, ojoDeGato=false)])
+	const bici4 = new Bici(rodado=28, largoEnCm=160, marca="Olmo")
+	
+	test "Se hizo la luz"{
+	
+		deposito.guardarBici(bici3)
+		deposito.guardarBici(bici4)
+		deposito.guardarBici(bici1)
+		deposito.guardarBici(bici2)
+		assert.that(deposito.seHizoLaLuz())
+	}
+	test "No se hizo la luz"{
+		deposito.guardarBici(bici3)
+		deposito.guardarBici(bici1)
+		deposito.guardarBici(bici4)
+		deposito.guardarBici(bici2)
 		assert.notThat(deposito.seHizoLaLuz())
 	}
-	
 }
