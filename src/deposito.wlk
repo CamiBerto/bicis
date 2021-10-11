@@ -36,6 +36,6 @@ class Deposito {
 	
 	method bicisSinLuz() = bicicletas.filter{c=>!c.tieneLuz()}
 		
-	method seHizoLaLuz() = ( self.bicisSinLuz() + self.bicisConLuz() ) == bicicletas
+	method seHizoLaLuz() = not self.bicisConLuz().isEmpty() && ( self.bicisSinLuz() + self.bicisConLuz() ) == bicicletas
 	
 }
