@@ -38,9 +38,9 @@ class Deposito {
 		const pares = []
 		if (self.hayBicisCompanieras()) {
 			const bicisConCompaniera = bicicletas.filter{ bici => self.hayCompanieraDe(bici) }
-			bicisConCompaniera.forEach{ bici => pares.add(new ParDeBicis(bicis= #{bici, self.companieraDe(bici)})}
+			bicisConCompaniera.forEach{ bici => pares.add(new ParDeBicis(bicis = #{ bici, self.companieraDe(bici) }))}
+			return pares.asSet()
 		}
-		return pares.asSet()
 	}
 
 }
