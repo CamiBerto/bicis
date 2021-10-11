@@ -32,5 +32,5 @@ class Bici {
 	method id (numero) { id = numero }
 
 	method esCompanieraDe(biciCompaniera) = marca == biciCompaniera.marca() && (biciCompaniera.largoEnCm() - largoEnCm).abs() <= 10 && self != biciCompaniera
-
+	
 }

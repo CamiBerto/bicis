@@ -1,4 +1,4 @@
-import deposito.*
+import depositoPrueba.*
 import bicis.*
 import accesorios.*
 
@@ -51,6 +51,16 @@ describe "Tests para los depósitos" {
 	test "es companiera de bici 1, si genero una bici con igual nombre y una dif de 10cm"{
 		const biciCompaniera = new Bici(rodado=28, largoEnCm=160, marca="Olmo")
 		assert.that(deposito.hayCompanieraDe(biciCompaniera))
+	}
+	test "hay companieras"{
+		const biciCompaniera = new Bici(rodado=28, largoEnCm=160, marca="Olmo")
+		deposito.guardarBici(biciCompaniera)
+		assert.that(deposito.hayCompanieras())
+	}
+	test "se hizo la luz"{
+		const biciCompaniera = new Bici(rodado=28, largoEnCm=160, marca="Olmo")
+		deposito.guardarBici(biciCompaniera)
+		assert.notThat(deposito.seHizoLaLuz())
 	}
 	
 }
