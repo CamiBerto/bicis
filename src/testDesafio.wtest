@@ -1,0 +1,27 @@
+import bicis.*
+import accesorios.*
+import deposito.*
+
+describe "Tests para los ejercicios de desafío" {
+
+	const deposito = new Deposito()
+	const bici1 = new Bici(rodado = 28, largoEnCm = 120, marca = "Olmo", accesorios = [ new Farolito() ])
+	const bici2 = new Bici(rodado = 28, largoEnCm = 100, marca = "Bike")
+
+	method initialize() {
+		deposito.guardarBici(bici1)
+		deposito.guardarBici(bici2)
+	}
+
+	test "indica correctamente que no hayBicisCompanieras" {
+		assert.notThat(deposito.hayBicisCompanieras())
+	}
+
+	test "hay bicis compañeras cuando agrego una compañera al depósito" {
+		// Agrego compañera de bici1
+		deposito.guardarBici(new Bici(rodado = 26, largoEnCm = 125, marca = "Olmo"))
+		assert.that(deposito.hayBicisCompanieras())
+	}
+
+}
+
